@@ -93,11 +93,10 @@ const getAllOperation: INodeProperties[] = [
 		displayName: 'Limit',
 		name: 'limit',
 		type: 'number',
-		default: 100,
-		typeOptions: {
-			minValue: 1,
-			maxValue: 250,
-		},
+       default: 50,
+       typeOptions: {
+               minValue: 1,
+       },
 		displayOptions: {
 			show: {
 				resource: ['execution'],
