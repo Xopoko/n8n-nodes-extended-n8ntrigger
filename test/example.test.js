@@ -1,35 +1,8 @@
 const { test } = require('node:test');
 const assert = require('node:assert');
-const { Example } = require('../dist/nodes/Example/Example.node.js');
+const { N8nTrigger } = require('../dist/nodes/Example/N8nTrigger/N8nTrigger.node.js');
 
-class TestContext {
-  constructor(parameters) {
-    this.parameters = parameters;
-  }
-  getInputData() {
-    return [{ json: {} }];
-  }
-  getNodeParameter(name) {
-    return this.parameters[name];
-  }
-  getNode() {
-    return { name: 'Example' };
-  }
-  continueOnFail() {
-    return false;
-  }
-}
-
-test('returns greeting', async () => {
-  const node = new Example();
-  const context = new TestContext({ name: 'Tester' });
-  const result = await node.execute.call(context);
-  assert.deepStrictEqual(result[0][0].json, { greeting: 'Hello Tester!' });
-});
-
-test('returns reversed greeting', async () => {
-  const node = new Example();
-  const context = new TestContext({ name: 'Tester', reverse: true });
-  const result = await node.execute.call(context);
-  assert.deepStrictEqual(result[0][0].json, { greeting: '!retseT olleH' });
+test('description name is correct', () => {
+  const node = new N8nTrigger();
+  assert.strictEqual(node.description.name, 'n8nTrigger');
 });
